@@ -1,0 +1,38 @@
+# Archivos de base de datos
+db.sqlite3
+
+# Archivos y directorios de Python compilados
+*.pyc
+*.pyo
+__pycache__/
+
+# Archivos de entorno virtual
+env/
+venv/
+
+# Archivos de configuraciones del IDE
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Archivos de logs
+*.log
+
+# Archivos generados por el sistema operativo
+.DS_Store          # macOS
+Thumbs.db          # Windows
+
+# Archivos de configuración local (como variables de entorno)
+.env
+
+# Archivos de configuración de tests (si no son necesarios)
+*.bak
+*.swp
+*.swo
+
+# Archivos de migraciones generados automáticamente
+migrations/
+
+# Carpetas de dependencias (si las usas en algún otro entorno, como Node.js)
+node_modules/
+.venv/

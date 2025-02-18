@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'header.html' %}
+    <h2>Add a Recipe</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} 
+        <button type="submit" class="btn btn-primary">Save Recipe</button>
+    </form>
+    <a href="{% url 'recipes:recipes-list' %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+      Go back
+    </a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'header.html' %}
+ <h1>{{ingredients.name}}</h1>
+ 
+ {% if ingredients.description %}
+    <p>{{ ingredients.description }}</p>
+  {% else %}
+    <p><em>No description so far!</em></p>
+  {% endif %}
+ <a href="{% url 'ingredient:ingredient-list' %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+  Go back
+</a>
+
+
+{%endblock%}

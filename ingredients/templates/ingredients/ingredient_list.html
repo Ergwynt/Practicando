@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'header.html' %}
+<a href="{% url 'ingredient:add-ingredient' %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+  Add ingredient
+</a>
+ {% for ingredient in ingredients  %}
+  <h1>{{ingredient.name}}</h1>
+
+  <p>{{ingredient.description}}</p>
+  <a href="{% url 'ingredient:ingredient-detail' ingredient.pk %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+    View Ingredient
+  </a>
+  <hr>
+ 
+ 
+  {%empty%}
+  <h1>No ingredients so far!</h1>
+ {% endfor %}
+
+
+{%endblock%}

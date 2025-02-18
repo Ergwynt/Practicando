@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'header.html' %}
+<a href="{% url 'recipes:add-recipes' %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+  Add recipe
+</a> 
+ {% for recipe in recipes %}
+  <h1>{{recipe.name}}</h1>
+
+  <p>{{recipe.script}}</p>
+
+  <h3>Ingredients:</h3>
+  <ul>
+    {% for ingredient in recipe.ingredients.all %}
+        <li>{{ ingredient.name }}</li>
+    {% empty %}
+        <li>No ingredients added yet.</li>
+    {% endfor %}
+  <a href="{% url 'recipes:recipes-detail' recipe.pk %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+    View Recipe
+  </a> 
+  <hr>
+ 
+ 
+  {%empty%}
+  <h1>No recipes so far!</h1>
+ {% endfor %}
+
+
+{%endblock%}
