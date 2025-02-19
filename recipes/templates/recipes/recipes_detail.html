@@ -2,28 +2,41 @@
 
 {% block content %}
 {% include 'header.html' %}
- <h1>{{recipe.name}}</h1>
- 
- {% if recipe.script %}
+<a href="{% url 'recipes:add-factor' recipe.pk %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+  Add Factor
+</a>
+<h1>{{ recipe.name }}</h1>
+
+{% if recipe.script %}
     <p>{{ recipe.script }}</p>
-  {% else %}
+{% else %}
     <p><em>No script so far!</em></p>
-  {% endif %}
-  <h3>Ingredients:</h3>
-  <ul>
+{% endif %}
+
+<h3>Ingredients:</h3>
+<ul>
     {% for ingredient in recipe.ingredients.all %}
         <li>{{ ingredient.name }}</li>
     {% empty %}
         <li>No ingredients added yet.</li>
     {% endfor %}
-    {% for factor in factors  %}
-    
-    {% empty %}
-      <h1>No factors so far!</h1>
-    {% endfor %}
- <a href="{% url 'recipes:recipes-list' %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
-  Go back
+</ul>
+
+<h3>Factors:</h3>
+<ul>
+    {% if factors %}
+        {% for factor in factors %}
+            <li>{{ factor.ingredient }} - {{ factor.amount }} {{ factor.get_unit_display }}</li>
+        {% endfor %}
+    {% else %}
+        <li>No factors so far!</li>
+    {% endif %}
+</ul>
+
+
+<a href="{% url 'recipes:recipes-list' %}" class="btn btn-outline-primary rounded-pill shadow-sm w-75 mx-auto mt-3">
+    Go back
 </a>
 
 
-{%endblock%}
+{% endblock %}

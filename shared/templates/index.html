@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Bienvenido a Yummi</h1>
+    <div class="list-group mt-4">
+        <a href="{% url 'ingredient:ingredient-list' %}" class="list-group-item list-group-item-action">
+            Ingredientes
+        </a>
+        <a href="{% url 'recipes:recipes-list' %}" class="list-group-item list-group-item-action">
+            Recetas
+        </a>
+    </div>
+</div>
+{% endblock %}

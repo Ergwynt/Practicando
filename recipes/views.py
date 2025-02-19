@@ -11,8 +11,8 @@ def recipes_list(request):
 
 
 def recipes_detail(request, pk):
-    recipes_detail = Recipe.objects.get(pk=pk)
-    factor_list = Factor.objects.all()
+    recipes_detail = get_object_or_404(Recipe, pk=pk)
+    factor_list = Factor.objects.filter(recipe=recipes_detail)
     return render(
         request, 'recipes/recipes_detail.html', {'recipe': recipes_detail, 'factors': factor_list}
     )
@@ -39,7 +39,7 @@ def add_factor(request, pk):
             factor.recipe = recipe  # Asignar la receta al factor
             factor.save()
             return redirect(
-                'recipes:recipes-detail', recipe_id=recipe.pk
+                'recipes:recipes-detail', pk=recipe.pk
             )  # Redirigir al detalle de la receta
     else:
         form = FactorForm()
